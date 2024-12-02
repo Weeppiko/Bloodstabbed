@@ -1,0 +1,255 @@
+[
+    {
+        "color": "#ffff0000",
+        "drawFill": true,
+        "id": 2,
+        "members": [
+            {
+                "name": "type",
+                "propertyType": "type_collision",
+                "type": "string",
+                "value": "solid"
+            }
+        ],
+        "name": "collision",
+        "type": "class",
+        "useAs": [
+            "object",
+            "project"
+        ]
+    },
+    {
+        "color": "#ffa0a0a4",
+        "drawFill": true,
+        "id": 10,
+        "members": [
+            {
+                "name": "_module",
+                "type": "string",
+                "value": "megaskeleton"
+            }
+        ],
+        "name": "megaskeleton",
+        "type": "class",
+        "useAs": [
+            "object",
+            "project"
+        ]
+    },
+    {
+        "color": "#ff3e3e3e",
+        "drawFill": true,
+        "id": 12,
+        "members": [
+            {
+                "name": "_module",
+                "type": "string",
+                "value": "placeholder"
+            },
+            {
+                "name": "direction",
+                "propertyType": "type_direction",
+                "type": "string",
+                "value": "left"
+            },
+            {
+                "name": "enemy",
+                "propertyType": "type_enemies",
+                "type": "string",
+                "value": "undead"
+            },
+            {
+                "name": "modifier",
+                "type": "float",
+                "value": 0
+            },
+            {
+                "name": "move_speed",
+                "type": "int",
+                "value": 64
+            }
+        ],
+        "name": "placeholder",
+        "type": "class",
+        "useAs": [
+            "object",
+            "project"
+        ]
+    },
+    {
+        "color": "#ff5555ff",
+        "drawFill": true,
+        "id": 1,
+        "members": [
+            {
+                "name": "_module",
+                "type": "string",
+                "value": "player"
+            }
+        ],
+        "name": "player",
+        "type": "class",
+        "useAs": [
+            "object",
+            "project"
+        ]
+    },
+    {
+        "color": "#ffa0a0a4",
+        "drawFill": true,
+        "id": 7,
+        "members": [
+            {
+                "name": "_module",
+                "type": "string",
+                "value": "skeleton"
+            },
+            {
+                "name": "direction",
+                "propertyType": "type_direction",
+                "type": "string",
+                "value": "left"
+            },
+            {
+                "name": "modifier",
+                "type": "float",
+                "value": 0
+            }
+        ],
+        "name": "skeleton",
+        "type": "class",
+        "useAs": [
+            "object",
+            "project"
+        ]
+    },
+    {
+        "color": "#ffff007f",
+        "drawFill": true,
+        "id": 5,
+        "members": [
+            {
+                "name": "_module",
+                "type": "string",
+                "value": "spawner"
+            },
+            {
+                "name": "enemy",
+                "propertyType": "type_enemies",
+                "type": "string",
+                "value": "undead"
+            },
+            {
+                "name": "frequency",
+                "type": "float",
+                "value": 1
+            },
+            {
+                "name": "meet_floor",
+                "type": "bool",
+                "value": true
+            },
+            {
+                "name": "side",
+                "propertyType": "type_sides",
+                "type": "string",
+                "value": "both"
+            },
+            {
+                "name": "variation",
+                "type": "float",
+                "value": 0
+            }
+        ],
+        "name": "spawner",
+        "type": "class",
+        "useAs": [
+            "property",
+            "object",
+            "project"
+        ]
+    },
+    {
+        "color": "#ffffffff",
+        "drawFill": true,
+        "id": 11,
+        "members": [
+            {
+                "name": "_module",
+                "type": "string",
+                "value": "trigger"
+            },
+            {
+                "name": "script",
+                "type": "string",
+                "value": ""
+            }
+        ],
+        "name": "trigger",
+        "type": "class",
+        "useAs": [
+            "property",
+            "object",
+            "project"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "type_collision",
+        "storageType": "string",
+        "type": "enum",
+        "values": [
+            "solid",
+            "oneway",
+            "ladder"
+        ],
+        "valuesAsFlags": false
+    },
+    {
+        "id": 8,
+        "name": "type_direction",
+        "storageType": "string",
+        "type": "enum",
+        "values": [
+            "left",
+            "right"
+        ],
+        "valuesAsFlags": false
+    },
+    {
+        "id": 9,
+        "name": "type_enemies",
+        "storageType": "string",
+        "type": "enum",
+        "values": [
+            "undead",
+            "bat",
+            "skeleton",
+            "werewolf"
+        ],
+        "valuesAsFlags": false
+    },
+    {
+        "id": 4,
+        "name": "type_sides",
+        "storageType": "string",
+        "type": "enum",
+        "values": [
+            "both",
+            "left",
+            "right"
+        ],
+        "valuesAsFlags": false
+    },
+    {
+        "id": 6,
+        "name": "type_spawnmode",
+        "storageType": "string",
+        "type": "enum",
+        "values": [
+            "player",
+            "screen"
+        ],
+        "valuesAsFlags": false
+    }
+]

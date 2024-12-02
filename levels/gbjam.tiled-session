@@ -1,0 +1,99 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "stage2/stage2.tmx",
+    "expandedProjectPaths": [
+        ".",
+        "stage2",
+        "stage1"
+    ],
+    "exportAsImage.drawTileGrid": false,
+    "exportAsImage.includeBackgroundColor": false,
+    "exportAsImage.useCurrentScale": false,
+    "exportAsImage.visibleLayersOnly": true,
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "C:/Users/admin/Documents/LOVE/gbjam/assets/tileset/stage1.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 4
+        },
+        "C:/Users/admin/Documents/LOVE/gbjam/assets/tileset/tileset.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 3
+        },
+        "stage1/stage1.tmx": {
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 2,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 2876.25,
+                "y": 56.5
+            }
+        },
+        "stage1/stage2.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 0.75,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 644.6666666666665,
+                "y": -62.66666666666674
+            }
+        },
+        "stage2/stage2.tmx": {
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 3,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 980.5,
+                "y": 93.99999999999999
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Users/admin/Documents/LOVE/gbjam/levels/stage2",
+    "last.externalTilesetPath": "C:/Users/admin/Documents/LOVE/gbjam/assets/tileset",
+    "last.imagePath": "C:/Users/admin/Documents/LOVE/gbjam/assets/tileset",
+    "last.objectTypesPath": "C:/Users/admin/Documents/LOVE/gbjam/levels/propertytypes.json",
+    "map.fixedSize": true,
+    "map.height": 18,
+    "map.lastUsedExportFilter": "Lua files (*.lua)",
+    "map.lastUsedFormat": "tmx",
+    "map.orientation": 1,
+    "map.renderOrder": 3,
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
+    "map.width": 400,
+    "openFiles": [
+        "stage1/stage1.tmx",
+        "stage2/stage2.tmx",
+        "C:/Users/admin/Documents/LOVE/gbjam/assets/tileset/tileset.tsx"
+    ],
+    "project": "gbjam.tiled-project",
+    "property.type": "int",
+    "recentFiles": [
+        "stage1/stage1.tmx",
+        "C:/Users/admin/Documents/LOVE/gbjam/assets/tileset/tileset.tsx",
+        "stage2/stage2.tmx",
+        "stage1/stage2.tmx",
+        "C:/Users/admin/Documents/LOVE/gbjam/assets/tileset/stage1.tsx"
+    ],
+    "tileset.embedInMap": false,
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    },
+    "tileset.transparentColor": "#003039",
+    "tileset.type": 0,
+    "tileset.useTransparentColor": false
+}

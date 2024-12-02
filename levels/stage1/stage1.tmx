@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="400" height="18" tilewidth="8" tileheight="8" infinite="0" nextlayerid="11" nextobjectid="177">
+ <editorsettings>
+  <export target="stage1.lua" format="lua"/>
+ </editorsettings>
+ <properties>
+  <property name="music_filename" value="music_a.ogg"/>
+  <property name="music_loopstart" type="float" value="4.414"/>
+  <property name="palette_index" type="int" value="2"/>
+  <property name="script">local spawn_rate = 5
+self.prng  = self.prng or love.math.newRandomGenerator(0xBA7A7A)
+self.bias  = self.bias or 0.5
+self.timer = (self.timer or 0) + dt
+if self.timer &gt;= spawn_rate then
+  self.timer = self.timer - spawn_rate
+  local l, t, r, b = gamecamera:getBoundaries()
+  if self.prng:random() &lt; self.bias then
+    self.bias = self.bias - 0.25
+    local near = gameroom:chooseFromGroup('player', function(a, b) return a.x &lt; b.x end)
+    local properties = { direction = 'right', move_speed = 65 + self.prng:random(10) }
+    gameroom:addInstance('undead', 'objects', l, near.y_land, properties)
+  else
+    self.bias = self.bias + 0.25
+    local near = gameroom:chooseFromGroup('player', function(a, b) return a.x &gt; b.x end)
+    local properties = { direction = 'left', move_speed = 45 + self.prng:random(10) }
+    gameroom:addInstance('undead', 'objects', r, near.y_land, properties)
+  end
+end
+
+</property>
+ </properties>
+ <tileset firstgid="1" source="../../assets/tileset/tileset.tsx"/>
+ <imagelayer id="4" name="background_lower" parallaxx="0">
+  <image source="../../assets/sprite/backplane1.png" width="160" height="144"/>
+ </imagelayer>
+ <imagelayer id="9" name="background_middle" parallaxx="0.5" repeatx="1">
+  <image source="../../assets/sprite/backplane3.png" width="160" height="144"/>
+ </imagelayer>
+ <imagelayer id="8" name="background_upper" parallaxx="0.75" repeatx="1">
+  <image source="../../assets/sprite/backplane2.png" width="160" height="144"/>
+ </imagelayer>
+ <layer id="6" name="tiles_back" width="400" height="18">
+  <data encoding="base64" compression="zlib">
+   eJztmslNBEEMRSceYiEE0kBEgMiDJQC2BNgCYEsASIBlzhipRypaTdMuu2yr/J/0LzNll+0vdV28WgEAAAAAAAAAAAAAAAAAAADwm0PSEemYdNLgvFZsFrL6EamW3rCYLfzLxynpjHROuiBdKp/Xis1CVj8i1dIbFrOFf3m5Il2Tbki3pDvl81qxWcjqR6RaesNitvAvJ/ekB9Ij6Yn0rHxeKzYLWf2IVEtvWMwW/uXlhfRKemt0Xis2C1n9iFRLb1jMFv7l4530QfokfZHWyue1YrOQ1Y9ItfSGxWyn7liP/gdt9ww0c9fm2h5kxdL7OP1I5+gdX1LOh5O31kdr/yOj4aP3flwEP+dqyLS31XLPQDO3JNfOICuW3MfpRzpH7/gxm/lw89b6aO1/VDR8jLAfF8HPv2rw3tvaG2lX+NsSWu4ZaOauzbU1yIql93H6kc7RO76knA8nb62P1v5HRsNH7/24CH7O1TDVo+T7zOFgpH3hb0touWegmbs2V9T3g9OPdI7e8SXlfDh58X7I0fDRez8ugp9zNUz1KPk+c/B4P35ouWegmbsml/V3hxPH6Uc6R+/4DeP5LM2L90MHDR899+Mi+PlfDeMee34/Wu4yaOauzRX1/eD0I52jd3xJOR9OXrwfcjR89N6Pi+DnXA1TPVq9HwAAAAAAAABgxTco/wyw
+  </data>
+ </layer>
+ <layer id="1" name="tiles" width="400" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzt2jFywjAQhWFOkCPQE44COQHJIaAiZahCSU4cUXjGeFYg7H3yavi/mdfIYyRrNRKFFgsAAAAAAAAAAAAAAAAAAAAAAAAAiOOY8h3gN+bU+vgVmBMAj/ymnAP8xpxaH78Cc4LaNinbQfYpB6NdlVx/H8LvjsqzHt7vWfXYOD6fGsX4oiuZv9J1oKxffwwtzjNsu5TPQX5STka7Krn+voTfHZVnPca+d0n5M9qteuwcn0+NYnzRlcxf6TpQ1q8/hhbnGbZVyvsgXa2H7ark+lsLvzsqz3p054CyHivH51OjGF90JfNXug6U9euPocV5hs2q/9h9Z2xy/b3iOvOsx9hzh/OjHSXzV7oOlPXrj6HFefaQu9/wbHukfj3/73b9Kvere2rXR3HfxbMenB++54fX+vJcp5wf7cjdb3i2PVK/nvtV1+9c50ft+ijuu3B+xD0/vNaX5zrl/JjmTZBa944IIYTc5no/S7GvW1kKUuveESGEkNtc72cp9nUr/+L1+44=
+  </data>
+ </layer>
+ <layer id="7" name="tiles_front" width="400" height="18">
+  <data encoding="base64" compression="zlib">
+   eJzt2jsOABAURUH7wv63RSOxAJJLZpJTaXyie6UAAAAAAAAAAAAAAAAAALCrsxZav3juVK+9Rz24nri/dEn3518DAAAAAAAAAEvyDIwk/Zz5LAAA4EcDwI121Q==
+  </data>
+ </layer>
+ <objectgroup id="3" name="objects">
+  <object id="1" name="Player" type="player" x="52" y="120">
+   <point/>
+  </object>
+  <object id="38" name="boss trigger" type="trigger" x="3120" y="128">
+   <properties>
+    <property name="script">gameroom:addInstance('megaskeleton', 'tiles_back', self.x)
+gameaudio:playBGM('boss.ogg', 0.75, 3.434)
+gamescene.get():stopScript()</property>
+   </properties>
+   <point/>
+  </object>
+  <object id="75" name="&lt;- Undead" type="placeholder" x="720" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="61"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="78" name="Undead -&gt;" type="placeholder" x="660" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="70"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="80" name="Undead -&gt;" type="placeholder" x="756" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="72"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="81" name="&lt;- Undead" type="placeholder" x="852" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="61"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="82" name="&lt;- Undead" type="placeholder" x="968" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="55"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="83" name="&lt;- Undead" type="placeholder" x="1052" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="55"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="88" name="&lt;- Undead" type="placeholder" x="932" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="60"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="89" name="&lt;- Bat" type="placeholder" x="756" y="68">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="91" name="&lt;- Bat" type="placeholder" x="844" y="76">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="95" name="Bat -&gt;" type="placeholder" x="972" y="116">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="90"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="99" name="Bat -&gt;" type="placeholder" x="1200" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="90"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="102" name="&lt;- Undead" type="placeholder" x="1500" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="64"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="103" name="Undead -&gt;" type="placeholder" x="1560" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="72"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="104" name="Undead -&gt;" type="placeholder" x="1720" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="75"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="106" name="Undead -&gt;" type="placeholder" x="1492" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="73"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="108" name="&lt;- Undead" type="placeholder" x="1672" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="60"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="109" name="&lt;- Bat" type="placeholder" x="1636" y="124">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="110" name="&lt;- Bat" type="placeholder" x="1604" y="68">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="111" name="&lt;- Bat" type="placeholder" x="1780" y="116">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="112" name="&lt;- Bat" type="placeholder" x="1872" y="120">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="114" name="&lt;- Undead" type="placeholder" x="1740" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="60"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="117" name="Bat -&gt;" type="placeholder" x="1840" y="72">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="70"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="119" name="Bat -&gt;" type="placeholder" x="1908" y="68">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="85"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="120" name="&lt;- Undead" type="placeholder" x="1836" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="55"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="122" name="&lt;- Undead" type="placeholder" x="1952" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="60"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="128" name="Undead -&gt;" type="placeholder" x="2052" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="70"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="130" name="&lt;- Undead" type="placeholder" x="2160" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="61"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="132" name="&lt;- Undead" type="placeholder" x="2380" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="55"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="133" name="Undead -&gt;" type="placeholder" x="2308" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="70"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="135" name="Undead -&gt;" type="placeholder" x="1964" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="70"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="137" name="&lt;- Undead" type="placeholder" x="2064" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="55"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="139" name="&lt;- Bat" type="placeholder" x="2024" y="68">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="140" name="&lt;- Bat" type="placeholder" x="2108" y="68">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="142" name="&lt;- Bat" type="placeholder" x="2192" y="60">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="143" name="Undead -&gt;" type="placeholder" x="2196" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="75"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="144" name="&lt;- Undead" type="placeholder" x="2444" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="60"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="145" name="&lt;- Undead" type="placeholder" x="2596" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="64"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="146" name="Undead -&gt;" type="placeholder" x="2692" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="72"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="148" name="Undead -&gt;" type="placeholder" x="2592" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="73"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="149" name="&lt;- Undead" type="placeholder" x="2680" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="60"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="150" name="&lt;- Bat" type="placeholder" x="2540" y="104">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="151" name="&lt;- Bat" type="placeholder" x="2724" y="68">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="50"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="154" name="Undead -&gt;" type="placeholder" x="2768" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="75"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="155" name="&lt;- Undead" type="placeholder" x="2916" y="84">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="60"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="156" name="Bat -&gt;" type="placeholder" x="2820" y="116">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="90"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="158" name="Bat -&gt;" type="placeholder" x="2976" y="116">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="enemy" propertytype="type_enemies" value="bat"/>
+    <property name="modifier" type="float" value="1"/>
+    <property name="move_speed" type="int" value="80"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="159" name="Undead -&gt;" type="placeholder" x="3020" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="right"/>
+    <property name="move_speed" type="int" value="75"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="161" name="&lt;- Undead" type="placeholder" x="308" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="55"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="162" name="&lt;- Undead" type="placeholder" x="604" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="61"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="164" name="&lt;- Undead" type="placeholder" x="1348" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="60"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="166" name="&lt;- Undead" type="placeholder" x="2796" y="132">
+   <properties>
+    <property name="direction" propertytype="type_direction" value="left"/>
+    <property name="move_speed" type="int" value="60"/>
+   </properties>
+   <point/>
+  </object>
+ </objectgroup>
+</map>
